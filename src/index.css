@@ -1,0 +1,342 @@
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #000000;
+  --surface: #1C1C1E;
+  --border: rgba(84,84,88,0.5);
+  --text: #FFFFFF;
+  --text-sub: #8E8E93;
+  --accent: #0A84FF;    /* iOS blue dark */
+  --accent-text: #ffffff;
+  --radius: 14px;
+  --radius-sm: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+body {
+  background: var(--tg-theme-bg-color, var(--bg));
+  color: var(--tg-theme-text-color, var(--text));
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* ===== Layout ===== */
+.app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding: 0 16px;
+}
+
+.screen-center {
+  justify-content: center;
+}
+
+.screen-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+  gap: 16px;
+}
+
+.screen-footer {
+  padding: 16px 0 40px;
+}
+
+/* ===== Hero ===== */
+.hero {
+  text-align: center;
+  padding: 8px 0 16px;
+}
+
+.hero-icon {
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.hero-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--tg-theme-text-color, var(--text));
+  margin-bottom: 6px;
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: var(--tg-theme-hint-color, var(--text-sub));
+  font-weight: 400;
+}
+
+/* ===== Preset buttons — iOS grouped list style ===== */
+.presets {
+  display: flex;
+  flex-direction: column;
+  background: var(--tg-theme-secondary-bg-color, var(--surface));
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+
+.preset-btn {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--tg-theme-text-color, var(--text));
+  font-size: 17px;
+  font-weight: 400;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.preset-btn:last-child {
+  border-bottom: none;
+}
+
+.preset-btn::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.preset-btn.active {
+  background: rgba(0,122,255,0.06);
+}
+
+.preset-btn.active::after {
+  background: var(--accent);
+  border-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 9'%3E%3Cpath d='M1 4l3.5 3.5L11 1' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px;
+}
+
+.preset-btn:active {
+  background: rgba(0,0,0,0.05);
+}
+
+/* ===== Custom input ===== */
+.custom-input-wrap {
+  background: var(--tg-theme-secondary-bg-color, var(--surface));
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  background: transparent;
+  color: var(--tg-theme-text-color, var(--text));
+  font-size: 17px;
+  font-family: inherit;
+  outline: none;
+}
+
+.custom-input::placeholder {
+  color: var(--tg-theme-hint-color, var(--text-sub));
+}
+
+/* Hide number arrows */
+.custom-input::-webkit-outer-spin-button,
+.custom-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.custom-input[type=number] { -moz-appearance: textfield; }
+
+/* ===== Message textarea ===== */
+.message-input {
+  width: 100%;
+  min-height: 150px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--tg-theme-secondary-bg-color, var(--surface));
+  color: var(--tg-theme-text-color, var(--text));
+  font-size: 17px;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+
+.message-input::placeholder {
+  color: var(--tg-theme-hint-color, var(--text-sub));
+}
+
+.amount-badge {
+  text-align: center;
+  font-size: 13px;
+  color: var(--tg-theme-hint-color, var(--text-sub));
+}
+
+/* ===== Summary card ===== */
+.summary-card {
+  background: var(--tg-theme-secondary-bg-color, var(--surface));
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 20px;
+  font-size: 17px;
+  color: var(--tg-theme-hint-color, var(--text-sub));
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-value {
+  color: var(--tg-theme-text-color, var(--text));
+  font-weight: 400;
+  text-align: right;
+  max-width: 60%;
+}
+
+.summary-message .summary-value {
+  font-style: italic;
+  color: var(--text-sub);
+}
+
+.pay-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--tg-theme-hint-color, var(--text-sub));
+  padding: 0 16px;
+  line-height: 1.5;
+}
+
+/* ===== Thank screen ===== */
+.thank-content {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.thank-icon {
+  font-size: 80px;
+  line-height: 1;
+  margin-bottom: 4px;
+  animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pop {
+  0% { transform: scale(0.3); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.thank-title {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.thank-amount {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.thank-message {
+  font-size: 15px;
+  color: var(--tg-theme-hint-color, var(--text-sub));
+  font-style: italic;
+  max-width: 280px;
+  line-height: 1.5;
+}
+
+.thank-sub {
+  font-size: 15px;
+  color: var(--tg-theme-hint-color, var(--text-sub));
+}
+
+/* ===== Primary button — iOS style ===== */
+.btn-primary {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: var(--tg-theme-button-color, var(--accent));
+  color: var(--tg-theme-button-text-color, var(--accent-text));
+  font-size: 17px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: -0.2px;
+  transition: opacity 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-primary:not(:disabled):active {
+  transform: scale(0.97);
+  opacity: 0.85;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: var(--tg-theme-secondary-bg-color, var(--surface));
+  color: var(--accent);
+  font-size: 17px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== Back button — iOS chevron style ===== */
+.back-btn {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 4px 0;
+  font-size: 17px;
+  font-family: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
