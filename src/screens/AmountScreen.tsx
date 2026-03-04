@@ -29,7 +29,7 @@ export default function AmountScreen({ onNext }: Props) {
       <div className="screen-content">
         <div className="hero">
           <div className="hero-icon">☕</div>
-          <h1 className="hero-title">Поддержать автора</h1>
+          <h1 className="hero-title">Оплата поддержки проекта и развития сервиса</h1>
           <p className="hero-sub">Выбери сумму или введи свою</p>
         </div>
 
